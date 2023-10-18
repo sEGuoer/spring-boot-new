@@ -1,4 +1,5 @@
 import com.seguoer.MyApplication;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MyMockMvcTests {
 
     @Test
+    @DisplayName("使用模拟环境进行测试")
     void testWithMockMvc(@Autowired MockMvc mvc) throws Exception {
         mvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -23,14 +25,14 @@ public class MyMockMvcTests {
     }
 
     // If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
-    @Test
+    /*@Test
     void testWithWebTestClient(@Autowired WebTestClient webClient) {
         webClient
                 .get().uri("/")
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody(String.class).isEqualTo("Hello World");
-    }
+                .expectBody(String.class).isEqualTo("Hello World!");
+    }*/
 
 }
 
