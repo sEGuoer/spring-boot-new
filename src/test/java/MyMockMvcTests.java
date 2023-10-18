@@ -1,4 +1,6 @@
 import com.seguoer.MyApplication;
+import com.seguoer.config.MyProperties;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +24,12 @@ public class MyMockMvcTests {
         mvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello World!"));
+    }
+    @Test
+    @DisplayName("测试配置文件里面的值是否被赋")
+    void testMyProreties(@Autowired MyProperties myProperties) throws Exception {
+        Assertions.assertEquals("zcy", myProperties.getName());
+        Assertions.assertEquals("haha", myProperties.getTarget());
     }
 
     // If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
