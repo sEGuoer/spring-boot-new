@@ -1,5 +1,6 @@
 import com.seguoer.MyApplication;
 import com.seguoer.config.MyProperties;
+import com.seguoer.po.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -30,6 +34,15 @@ public class MyMockMvcTests {
     void testMyProreties(@Autowired MyProperties myProperties) throws Exception {
         Assertions.assertEquals("zcy", myProperties.getName());
         Assertions.assertEquals("haha", myProperties.getTarget());
+    }
+    @Test
+    @DisplayName("测试配置文件里面的值是否被赋")
+    void testMyPerson(@Autowired Person person) {
+        Assertions.assertEquals("feige", person.getUserName());
+        Assertions.assertEquals(false, person.getBoss());
+        Assertions.assertEquals(new Date(2021-1900, Calendar.MAY,1,12,12,12), person.getBirth());
+        Assertions.assertEquals(5,person.getAge());
+
     }
 
     // If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
