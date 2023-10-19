@@ -8,4 +8,31 @@ test:
     boss: false
     birth: "2021/05/01 12:12:12"
     age: 5
+    interests:
+      - "zcy"
+      - "hjf"
+    animal: ["mouse" , "cat" , "sheep"]
+    score:
+      mouse1 :
+        name : "mouse1"
+        age : 12
+      mouse2 :
+        name : "mouse2"
+        age : 24
+    salaries: [1.12 , 2.34 , 3.16]
+    pet:
+      name : "pet1"
+      age : 15
+    all-pets:
+      hjf :
+        - name : "dog1"
+          age : 15
+        - name : "cat1"
+          age : 5
+      zcy :
+        - name : "dog2"
+          age : 18
+        - name : "cat2"
+          age : 8
+
 

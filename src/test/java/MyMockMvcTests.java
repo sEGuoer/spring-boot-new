@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,6 +43,12 @@ public class MyMockMvcTests {
         Assertions.assertEquals(false, person.getBoss());
         Assertions.assertEquals(new Date(2021-1900, Calendar.MAY,1,12,12,12), person.getBirth());
         Assertions.assertEquals(5,person.getAge());
+        Assertions.assertEquals("[zcy, hjf]", Arrays.toString(person.getInterests()));
+        Assertions.assertEquals("[mouse, cat, sheep]", person.getAnimal().toString());
+        Assertions.assertEquals("{mouse1={name=mouse1, age=12}, mouse2={name=mouse2, age=24}}", person.getScore().toString());
+        Assertions.assertEquals("[1.12, 2.34, 3.16]", person.getSalaries().toString());
+        Assertions.assertEquals("Pet{name='pet1', age=15}",person.getPet().toString());
+        Assertions.assertEquals("{hjf=[Pet{name='dog1', age=15}, Pet{name='cat1', age=5}], zcy=[Pet{name='dog2', age=18}, Pet{name='cat2', age=8}]}",person.getAllPets().toString());
 
     }
 
