@@ -7,5 +7,7 @@ GET http://localhost:8080/pet
 Accept: application/xml
 
 
+###
+GET http://localhost:8080/pet?format=xml
 
 
