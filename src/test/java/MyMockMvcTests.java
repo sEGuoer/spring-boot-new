@@ -58,9 +58,9 @@ public class MyMockMvcTests {
                 .andExpect(status().isOk());
     }
     @Test
-    @DisplayName("webjars访问")
+    @DisplayName("webjars访问，静态前缀不需要再写了")
     void webjars(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(get("/res/webjars/bootstrap/5.3.0/css/bootstrap.css"))
+        mvc.perform(get("/webjars/bootstrap/css/bootstrap.css"))
                 .andExpect(status().isOk());
     }
 
