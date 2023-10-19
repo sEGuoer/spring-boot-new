@@ -57,6 +57,12 @@ public class MyMockMvcTests {
         mvc.perform(get("/res/demo1.html"))
                 .andExpect(status().isOk());
     }
+    @Test
+    @DisplayName("webjars访问")
+    void webjars(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(get("/res/webjars/bootstrap/5.3.0/css/bootstrap.css"))
+                .andExpect(status().isOk());
+    }
 
     // If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
     /*@Test
