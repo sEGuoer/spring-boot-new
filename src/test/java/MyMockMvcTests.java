@@ -51,6 +51,12 @@ public class MyMockMvcTests {
         Assertions.assertEquals("{hjf=[Pet{name='dog1', age=15}, Pet{name='cat1', age=5}], zcy=[Pet{name='dog2', age=18}, Pet{name='cat2', age=8}]}",person.getAllPets().toString());
 
     }
+    @Test
+    @DisplayName("几个文件夹下的静态可以直接通过文件名直接访问，如果静态前缀设置了则需要加上前缀")
+    void demo1213(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(get("/res/demo1.html"))
+                .andExpect(status().isOk());
+    }
 
     // If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
     /*@Test
