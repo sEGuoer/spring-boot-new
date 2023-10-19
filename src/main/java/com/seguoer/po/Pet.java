@@ -20,6 +20,11 @@ public class Pet {
         this.age = age;
     }
 
+    public Pet(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
