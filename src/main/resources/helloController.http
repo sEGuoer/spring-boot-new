@@ -9,5 +9,10 @@ Accept: application/xml
 
 ###
 GET http://localhost:8080/pet?format=xml
+###
+
+###
+POST http://localhost:8080/verify?email=1&pwd=2
+
 
 
