@@ -1,11 +1,11 @@
 ###
 GET http://localhost:8080/show
 Accept: application/x-www-form-urlencoded
-
+###
 ###
 GET http://localhost:8080/pet
-Accept: application/xml
-
+Content-Type: application/json
+###
 
 ###
 GET http://localhost:8080/pet?format=xml
@@ -13,6 +13,18 @@ GET http://localhost:8080/pet?format=xml
 
 ###
 POST http://localhost:8080/verify?email=1&pwd=2
+###
 
+### 这种方法是去请求体中拿数据，所以需要requestbody
+POST http://localhost:8080/person
+Content-Type: application/json
+
+{
+  "userName": "a",
+  "pet": {
+    "name": "pet",
+    "age" : 12
+  }
+}
 
 

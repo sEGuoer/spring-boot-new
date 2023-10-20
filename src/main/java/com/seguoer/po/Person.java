@@ -100,4 +100,20 @@ public class Person {
     public void setAllPets(Map<String, List<Pet>> allPets) {
         this.allPets = allPets;
     }
+
+    public Person() {
+    }
+
+    public Person(String userName, Boolean boss, Date birth, Integer age, String[] interests, List<String> animal, Map<String, Object> score, Set<Double> salaries, Pet pet, Map<String, List<Pet>> allPets) {
+        this.userName = userName;
+        this.boss = boss;
+        this.birth = birth;
+        this.age = age;
+        this.interests = interests;
+        this.animal = animal;
+        this.score = score;
+        this.salaries = salaries;
+        this.pet = pet;
+        this.allPets = allPets;
+    }
 }

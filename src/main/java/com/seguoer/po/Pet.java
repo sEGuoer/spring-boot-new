@@ -25,6 +25,9 @@ public class Pet {
         this.age = age;
     }
 
+    public Pet() {
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
