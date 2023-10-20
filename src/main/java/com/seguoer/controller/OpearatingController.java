@@ -12,6 +12,7 @@ public class OpearatingController {
         System.out.println(email);
         System.out.println(pwd);
         model.addAttribute("email",email);
-        return "demo1.html";
+        model.addAttribute("pwd",pwd);
+        return "user";
     }
 }
