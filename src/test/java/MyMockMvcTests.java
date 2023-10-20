@@ -33,12 +33,14 @@ public class MyMockMvcTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello World!"));
     }
+
     @Test
     @DisplayName("测试配置文件里面的值是否被赋")
     void testMyProreties(@Autowired MyProperties myProperties) throws Exception {
         Assertions.assertEquals("zcy", myProperties.getName());
         Assertions.assertEquals("haha", myProperties.getTarget());
     }
+
     @Test
     @DisplayName("测试配置文件里面的值是否被赋")
     void testMyPerson(@Autowired Person person) {
@@ -54,12 +56,14 @@ public class MyMockMvcTests {
         Assertions.assertEquals("{hjf=[Pet{name='dog1', age=15}, Pet{name='cat1', age=5}], zcy=[Pet{name='dog2', age=18}, Pet{name='cat2', age=8}]}", person.getAllPets().toString());
 
     }
+
     @Test
     @DisplayName("几个文件夹下的静态可以直接通过文件名直接访问，如果静态前缀设置了则需要加上前缀(前缀取消所以不需要前缀)")
     void demo1213(@Autowired MockMvc mvc) throws Exception {
         mvc.perform(get("/demo1.html"))
                 .andExpect(status().isOk());
     }
+
     @Test
     @DisplayName("webjars访问，静态前缀不需要再写了")
     void webjars(@Autowired MockMvc mvc) throws Exception {
@@ -71,26 +75,39 @@ public class MyMockMvcTests {
     @DisplayName("因为这里是向请求体发请求，所以不需要@Requestbody")
     void person(@Autowired MockMvc mvc) throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/person")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("userName", "asd")
-                .param("pet.name", "pet")
-                .param("pet.age", "12"))
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("userName", "asd")
+                        .param("pet.name", "pet")
+                        .param("pet.age", "12"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("userName").value("asd"))
                 .andExpect(MockMvcResultMatchers.jsonPath("pet.name").value("pet"))
                 .andExpect(MockMvcResultMatchers.jsonPath("pet.age").value("12"));
     }
+
     @Test
     @DisplayName("对比自己创建了对应的converter时，可以根据个人自定义如何赋值")
     void personConverter(@Autowired MockMvc mvc) throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/person")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("userName", "asd")
-                .param("pet", "asda,12"))
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("userName", "asd")
+                        .param("pet", "asda,12"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("userName").value("asd"))
                 .andExpect(MockMvcResultMatchers.jsonPath("pet.name").value("asda"))
                 .andExpect(MockMvcResultMatchers.jsonPath("pet.age").value("12"));
+    }
+
+    @Test
+    @DisplayName("对返回的内容可以自己来做一些预处理")
+    void personConverterForm(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/person")
+                        .accept("applications/x-custom")
+                        .param("userName", "asd")
+                        .param("pet.name", "pet")
+                        .param("pet.age", "12"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Person;15;other abandon"));
     }
 
     // If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
