@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="../../vite/build/assets/app.css">
+    <link rel="stylesheet" href="../../vite/build/assets/app.css" th:href="@{/vite/build/assets/app.css}">
     <style>
         html {
             height: 100%;
@@ -87,7 +87,7 @@
     <main class="container">
         <div class="card m-auto rounded-3 shadow-sm">
             <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">登录</h4>
+                <h4 class="my-0 fw-normal" th:text="#{please_sign_in}">Please sign in</h4>
             </div>
             <div class="card-body text-center">
                 <div class="small text-secondary">
@@ -111,19 +111,19 @@
                 <form class="m-4 px-5 mx-5" method="post" action="verify">
                     <div class="small text-secondary mb-2 mt-5">邮箱登录，备选方法</div>
                     <div class="mb-3 text-start">
-                        <label for="exampleInputEmail1" class="form-label">邮箱</label>
+                        <label for="exampleInputEmail1" class="form-label" th:text="#{email_address}">Email address</label>
                         <input type="email" required class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">输入的邮箱只用于登录，不会用作其他途径</div>
                     </div>
                     <div class="mb-3 text-start">
-                        <label for="exampleInputPassword1" class="form-label">密码</label>
+                        <label for="exampleInputPassword1" class="form-label" th:text="#{password}">Password</label>
                         <input type="password" class="form-control" name="pwd" id="exampleInputPassword1" >
                     </div>
                     <div class="mb-3 form-check text-start">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        <label class="form-check-label" for="exampleCheck1" th:text="#{remember_me}">Remember me</label>
                     </div>
-                    <div class="text-start"> <button type="submit" class="btn btn-danger">登录</button>
+                    <div class="text-start"> <button type="submit" class="btn btn-danger" th:text="#{sign_in}">Sign in</button>
                         <a href="./index_forgetpw.html"
                            class="link-secondary link-offset-2 link-underline link-underline-opacity-0 mx-2 small">忘记密码</a>
                         <a href="./index_register.html"
