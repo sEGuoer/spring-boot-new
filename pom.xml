@@ -51,6 +51,10 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.seguoer</groupId>
+            <artifactId>First-spring-boot-starter-autoconfigure</artifactId>
+            <version>0.0.1-new</version>
+        </dependency>
     </dependencies>
-
 </project>
